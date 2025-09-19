@@ -22,7 +22,7 @@ function displayCategoryList(categories) {
     const categoryList = document.getElementById('category-list')
     for (let cat of categories) {
         categoryList.innerHTML += `
-    <p id="${cat.id}" class="hover:bg-[#12b21a88] w-56 h-9 flex items-center text-lg font-semibold my-4 pl-3 rounded-lg hover:cursor-pointer">${cat.category_name}</p>
+    <p id="${cat.id}" class="hover:bg-[#12b21a88] text-[#1f2937e7] w-56 h-9 flex items-center text-lg my-4 pl-3 rounded-lg hover:cursor-pointer">${cat.category_name}</p>
     `
     }
 }
@@ -67,7 +67,7 @@ function showAllTrees(plant) {
     const categoryContent = document.getElementById('category-content')
     categoryContent.innerHTML +=
         `
-        <div id="categoryContentContainer" class="w-70 h-auto shadow-xl p-4 mb-8 rounded-xl">
+        <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 mb-8 rounded-xl">
         <div>
             <img src="${plant.image}" alt="" class="w-[298px] h-[178px] object-cover">
             <h2 class="my-3 text-lg font-semibold">${plant.name}</h2>
@@ -79,12 +79,13 @@ function showAllTrees(plant) {
         </div>
         <div>
             <button
-            class="w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full">Get
+            class="add-to-cart-btn w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full"  data-name="${plant.name}" data-price="${plant.price}">Get
             Involved
             </button>
         </div>
     </div>
     `
+
 }
 
 //LOAD CATEGORY CONTENT
@@ -110,11 +111,11 @@ function showCategoryContent(plants) {
 
     categoryContent.innerHTML +=
         `
-    <div id="categoryContentContainer" class="w-72 auto shadow-xl p-4 mb-8 rounded-xl">
+    <div id="categoryContentContainer" class="md:w-72 sm:w-full h-auto shadow-xl p-4 mb-8 rounded-xl">
         <div>
             <img src="${plants.image}" alt="" class="w-[298px] h-[178px] object-cover">
             <h2 class="my-3 text-lg font-semibold">${plants.name}</h2>
-            <p class="my-3 text-[#1f2937e7] text-sm">${plants.description}</p>
+            <p class="my-3 text-[#1f2937e7] text-sm text-justify">${plants.description}</p>
         </div>
         <div class="flex justify-between mt-4 mb-5">
             <h4 class="bg-green-200 text-green-700 font-medium px-2 py-1 rounded-3xl">${plants.category}</h4>
@@ -122,7 +123,7 @@ function showCategoryContent(plants) {
         </div>
         <div>
             <button
-            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full">Get
+            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full" data-name="${plants.name}" data-price="${plants.price}">Get
             Involved
             </button>
         </div>
@@ -135,5 +136,40 @@ function showCategoryContent(plants) {
 document.getElementById('all-trees').classList.add('activeClass');
 loadAllTrees();
 
+//CART
 
-// LOADING SPINNER
+
+// CATEGORY CONTENT container
+const categoryContent = document.getElementById('category-content');
+const purchaseProductContainer = document.getElementById('purchase-product-container');
+
+categoryContent.addEventListener('click', (event) => {
+    const btn = event.target.closest('button');
+    if (btn.tagName !== 'BUTTON')
+    {
+        return;
+    }
+    const name = btn.dataset.name;
+    const price = btn.dataset.price;
+
+    const purchaseProduct = document.createElement('div');
+    purchaseProduct.innerHTML = `
+        <div class="flex justify-between items-center bg-[#d9ffe4] p-3 rounded-xl my-2">
+            <div>
+                <h4 class="font-medium mb-1">${name}</h4>
+                <p>৳${price}</p>
+            </div>
+            <div class="hover:cursor-pointer remove-btn">
+                <img src="./assets/exit-button.png" alt="" class="w-5">
+            </div>
+        </div>
+    `;
+    purchaseProductContainer.appendChild(purchaseProduct);
+
+    //DELETE BTN
+    purchaseProduct.querySelector('.remove-btn').addEventListener('click', () => {
+        purchaseProduct.remove();
+    });
+});
+
+
