@@ -1,25 +1,35 @@
 
 //LOAD CATAGORY LIST
 
-loadCatagoryList = () => {
+loadCategoryList = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then((res) => res.json())
         .then((data) => {
-        displayCatagoryList(data.categories);
+            displayCategoryList(data.categories);
         })
 }
 
-loadCatagoryList();
+loadCategoryList();
 
 
-//DISPLAY CATAGORY LIST
+//DISPLAY CATEGORY LIST
 
-function displayCatagoryList(categories){
-    const catagoryList = document.getElementById('catagory-list')
-    for(let cat of categories)
-    {
-    catagoryList.innerHTML += `
-    <p class="bg-[#15803D] w-52 h-8 text-lg my-4 pl-2 hover:cursor-pointer">${cat.category_name}</p>
+function displayCategoryList(categories) {
+    const categoryList = document.getElementById('category-list')
+    for (let cat of categories) {
+        categoryList.innerHTML += `
+    <p class="hover:bg-[#12b21a88] w-56 h-9 flex items-center text-lg font-semibold my-4 pl-3 rounded-lg hover:cursor-pointer">${cat.category_name}</p>
     `
     }
 }
+
+//DISPLAY ACTIVE
+
+document.getElementById('category-list').addEventListener('click', (event) => {
+    if (event.target.localName === 'p') {
+        document.querySelectorAll('#category-list p').forEach((p) => {
+            p.classList.remove('activeClass')
+        })
+        event.target.classList.add('activeClass')
+    }
+})
