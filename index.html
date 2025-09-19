@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+    <link rel="shortcut icon" href="./assets/hero-leaf1.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#f0fdf4]">
+    <header>
+        <nav class="flex flex-col sm:flex-row justify-between items-center bg-[#15803D] px-20 py-3 sm:px-2 sm:py-2 text-white">
+            <h2 class="md:text-2xl text-3xl font-semibold md:my-0 my-1">Green Earth</h2>
+            <ul class="flex md:gap-12 gap-7 text-sm font-medium md:my-0 my-3">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Plant a Tree</a></li>
+            </ul>
+            <button
+                class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">Plant
+                a Tree</button>
+        </nav>
+        <section id="banner-section" class="bg-[#CFF0DC] flex items-center mb-14">
+            <div class="flex justify-around flex-1">
+                <img src="./assets/hero-leaf1.png" alt="leaf" class="hidden sm:block">
+            </div>
+            <div class="md:flex flex-col md:flex-1 md:justify-center items-center md:p-20 p-4">
+                <h2 class="text-[34px] font-bold mb-5">Plant a Tree, Grow a Future</h2>
+                <p class="text-base text-[#1F2937] md:text-center mb-5">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
+                <button
+                    class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">Get Involved
+                </button>
+            </div>
+            <div class="flex flex-1 justify-between">
+                <img src="./assets/hero-leaf2.png" alt="leaf" class="hidden sm:block">
+            </div>
+        </section>
+    </header>
+    <main class="px-16">
+        <h3 class="text-3xl font-semibold text-center mb-6">Choose Your Trees</h3>
+        <section class="grid grid-cols-3 gap-5">
+
+            <div id="catagory-list">
+                <h2 class="text-2xl font-bold mb-6">Catagories</h2>
+                <p class="bg-[#15803D] w-52 h-8 text-lg my-4 pl-2 hover:cursor-pointer">All Trees</p>
+            </div>
+
+
+
+            <div id="catagory-content">
+                
+            </div>
+
+
+
+            <div id="cart-section">
+
+            </div>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
