@@ -14,7 +14,7 @@
 <body class="inter-font bg-[#f0fdf4]">
     <header>
         <nav
-            class="flex flex-col sm:flex-row justify-between items-center bg-[#15803D] px-20 py-3 md:px-32 sm:px-2 sm:py-2 text-white">
+            class="flex flex-col sm:flex-row justify-between items-center bg-[#15803D] px-4 sm:px-6 md:px-20 py-3 text-white">
             <h2 class="md:text-2xl text-3xl font-semibold md:my-0 my-1">Green Earth</h2>
             <ul class="flex md:gap-12 gap-7 text-sm font-medium md:my-0 my-3">
                 <li><a href="#">About</a></li>
@@ -43,9 +43,9 @@
             </div>
         </section>
     </header>
-    <main class="px-10">
-        <h3 class="text-3xl font-semibold text-center mb-6">Choose Your Trees</h3>
-        <section class="md:flex md:justify-evenly md:gap-3 sm:gap-5 sm:grid sm:grid-cols-1">
+    <main>
+        <h3 class="text-3xl font-semibold text-center mt-20 mb-14">Choose Your Trees</h3>
+        <section class="md:flex md:justify-evenly md:gap-3 sm:gap-5 sm:grid sm:grid-cols-1 px-10">
 
             <div id="category-list">
                 <h2 class="text-2xl font-bold mb-6">Categories</h2>
@@ -57,22 +57,100 @@
             <div id="category-content" class="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
             </div>
 
-            <div id="cart-section" class="shadow-lg w-80 px-5">
+            <div id="cart-section" class="shadow-lg md:w-80 sm:w-full h-auto px-5 rounded-lg">
                 <h2 class="text-xl font-bold mb-5">Your Cart</h2>
                 <div id="purchase-product-container">
-                    
+
                 </div>
                 <div class="flex justify-between mt-8">
-                    <h5 class="text-lg font-medium">Total amount</h5>
+                    <h5 class="text-lg font-medium mb-5">Total amount</h5>
                     <h4 id="total-taka" class="text-lg font-medium">৳0</h4>
                 </div>
             </div>
         </section>
 
+        <section id="campaign-section" class="w-full max-w-[1090px] mx-auto mb-32 px-4">
+            <h3 class="text-3xl font-semibold text-center mt-32 mb-6">About the Campaign</h3>
+            <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-5">
+                <div>
+                    <img src="./assets/about.png" alt="" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="text-[#1F2937] text-sm">
+                    <p class="mb-7 text-[15px] text-justify">
+                        Green Earth is a global tree plantation initiative dedicated to fighting climate change.
+                        Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign,
+                        you help restore forests, create habitats for wildlife, and combat global warming.
+                    </p>
+                    <ul class="list-disc ml-4 space-y-1">
+                        <li>Restoration of natural habitats</li>
+                        <li>Improvement of air quality</li>
+                        <li>Support for local communities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
 
-
+        <section id="our-impact-section" class="bg-[#CFF0DC] py-16">
+            <h2 class="text-3xl font-semibold text-center mb-10">Our Impact</h2>
+            <ul class="grid md:grid-cols-3 grid-cols-1 gap-6 md:mx-32 mx-4">
+                <li
+                    class="bg-white px-10 sm:px-16 md:px-20 lg:px-28 py-6 text-center rounded-lg shadow-md hover:scale-106 duration-300 ease-in hover:border-4 border-green-600">
+                    <span class="text-3xl font-semibold text-green-500">500K+</span>
+                    <p class="text-base text-[#1f2937af]">Tree Planted</p>
+                </li>
+                <li
+                    class="bg-white px-10 sm:px-16 md:px-20 lg:px-28 py-6 text-center rounded-lg shadow-md hover:scale-106 duration-300 ease-in hover:border-4 border-green-600">
+                    <span class="text-3xl font-semibold text-green-500">120+</span>
+                    <p class="text-base text-[#1f2937af]">Communities Involved</p>
+                </li>
+                <li
+                    class="bg-white px-10 sm:px-16 md:px-20 lg:px-28 py-6 text-center rounded-lg shadow-md hover:scale-106 duration-300 ease-in hover:border-4 border-green-600">
+                    <span class="text-3xl font-semibold text-green-500">30+</span>
+                    <p class="text-base text-[#1f2937af]">Countries Reached</p>
+                </li>
+            </ul>
+        </section>
     </main>
+
+<footer>
+    <section class="bg-[#166534] pb-20">
+        <h3 class="text-3xl font-semibold text-center mb-6 text-white pt-16 pb-6">
+            Plant Tree Today
+        </h3>
+
+        <!-- Responsive Form -->
+        <div class="grid grid-cols-1 w-full max-w-[580px] bg-[#15803D] p-6 sm:p-10 rounded-lg mx-auto">
+            <input type="text" name="name" id="name" placeholder="Your Name"
+                class="bg-white border-none mb-5 h-10 rounded-lg pl-2">
+            <input type="text" name="email" id="email" placeholder="Your Email"
+                class="bg-white border-none mb-5 h-10 rounded-lg pl-2">
+            <select name="number-of-trees" id="number-of-trees"
+                class="bg-white border-none mb-5 h-10 rounded-lg pl-2 text-gray-500">
+                <option value="Number of Trees">Number of Trees</option>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="More Than 20">More Than 20</option>
+            </select>
+            <button
+                class="w-full py-2 bg-[#FACC15] rounded-lg text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">
+                Plant Now
+            </button>
+        </div>
+    </section>
+
+    <section class="bg-[#14532D]">
+        <h3 class="text-center py-6 text-white">
+            © 2025 Green Earth. All Rights Reserved.
+        </h3>
+    </section>
+</footer>
+
+
+
     <script src="index.js"></script>
 </body>
 

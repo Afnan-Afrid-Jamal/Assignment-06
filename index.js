@@ -67,7 +67,7 @@ function showAllTrees(plant) {
     const categoryContent = document.getElementById('category-content')
     categoryContent.innerHTML +=
         `
-        <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 mb-8 rounded-xl">
+        <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 rounded-xl">
         <div>
             <img src="${plant.image}" alt="" class="w-[298px] h-[178px] object-cover">
             <h2 class="my-3 text-lg font-semibold">${plant.name}</h2>
@@ -110,7 +110,7 @@ function showCategoryContent(plants) {
 
     categoryContent.innerHTML +=
         `
-    <div id="categoryContentContainer" class="md:w-72 sm:w-full h-auto shadow-xl p-4 mb-8 rounded-xl">
+    <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 rounded-xl">
         <div>
             <img src="${plants.image}" alt="" class="w-[298px] h-[178px] object-cover">
             <h2 class="my-3 text-lg font-semibold">${plants.name}</h2>
