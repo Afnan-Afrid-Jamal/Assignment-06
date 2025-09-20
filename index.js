@@ -70,7 +70,7 @@ function showAllTrees(plant) {
         <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 rounded-xl">
         <div>
             <img src="${plant.image}" alt="" class="w-[298px] h-[178px] object-cover">
-            <h2 class="my-3 text-lg font-semibold">${plant.name}</h2>
+            <h2 class="my-3 text-lg font-semibold hover:cursor-pointer" onclick="showDetail('${plant.id}')">${plant.name}</h2>
             <p class="my-3 text-[#1f2937e7] text-sm text-justify">${plant.description}</p>
         </div>
         <div class="flex justify-between mt-4 mb-5">
@@ -113,7 +113,7 @@ function showCategoryContent(plants) {
     <div id="categoryContentContainer" class="md:w-70 sm:w-full h-auto shadow-xl p-4 rounded-xl">
         <div>
             <img src="${plants.image}" alt="" class="w-[298px] h-[178px] object-cover">
-            <h2 class="my-3 text-lg font-semibold">${plants.name}</h2>
+            <h2 class="my-3 text-lg font-semibold hover:cursor-pointer" onclick="showDetail('${plants.id}')">${plants.name}</h2>
             <p class="my-3 text-[#1f2937e7] text-sm text-justify">${plants.description}</p>
         </div>
         <div class="flex justify-between mt-4 mb-5">
@@ -189,9 +189,7 @@ purchaseProductContainer.addEventListener('click', (event) => {
     }
 });
 
-
-
-
+// DISPLAY IN CART
 
 function showCart() {
     purchaseProductContainer.innerHTML = '';
@@ -215,3 +213,33 @@ function showCart() {
 
     document.getElementById('total-taka').innerText = `৳${totalAmount}`;
 }
+
+
+// SHOW MODAL
+
+function showDetail(treeId) {
+    fetch(`https://openapi.programming-hero.com/api/plant/${treeId}`)
+        .then((res) => res.json())
+        .then((data) => {
+            const tree = data.plants;
+
+            const modalBox = document.querySelector('#modalStructure .modal-box');
+            modalBox.innerHTML = `
+                <h3 class="text-3xl font-bold text-center">${tree.name}</h3>
+                <img src="${tree.image}" alt="${tree.name}" class="w-full h-48 object-cover my-3 rounded-lg">
+                <p class="py-2 text-lg text-gray-600 text-justify">${tree.description}</p>
+                <div class="flex justify-between mt-4 mb-5">
+                    <h4 class="bg-green-200 text-green-700 font-medium px-2 py-1 rounded-3xl">${tree.category}</h4>
+                    <h3 class="text-xl font-semibold">৳${tree.price}</h3>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            `;
+
+            document.getElementById('modalStructure').showModal();
+        })
+}
+
