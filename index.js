@@ -79,8 +79,7 @@ function showAllTrees(plant) {
         </div>
         <div>
             <button
-            class="add-to-cart-btn w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full"  data-name="${plant.name}" data-price="${plant.price}">Get
-            Involved
+            class="add-to-cart-btn w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full"  data-name="${plant.name}" data-price="${plant.price}">Add to Cart
             </button>
         </div>
     </div>
@@ -123,8 +122,7 @@ function showCategoryContent(plants) {
         </div>
         <div>
             <button
-            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full" data-name="${plants.name}" data-price="${plants.price}">Get
-            Involved
+            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full" data-name="${plants.name}" data-price="${plants.price}">Add to Cart
             </button>
         </div>
     </div>
@@ -138,38 +136,82 @@ loadAllTrees();
 
 //CART
 
-
-// CATEGORY CONTENT container
 const categoryContent = document.getElementById('category-content');
 const purchaseProductContainer = document.getElementById('purchase-product-container');
 
+let existingProductInCart = [];
+
 categoryContent.addEventListener('click', (event) => {
     const btn = event.target.closest('button');
-    if (btn.tagName !== 'BUTTON')
-    {
+    if (btn.tagName !== 'BUTTON') {
         return;
     }
-    const name = btn.dataset.name;
-    const price = btn.dataset.price;
+    else {
+        const name = btn.dataset.name;
+        const price = btn.dataset.price;
+        let existingItem = existingProductInCart.find(item => item.name === name);
 
-    const purchaseProduct = document.createElement('div');
-    purchaseProduct.innerHTML = `
-        <div class="flex justify-between items-center bg-[#d9ffe4] p-3 rounded-xl my-2">
-            <div>
-                <h4 class="font-medium mb-1">${name}</h4>
-                <p>৳${price}</p>
-            </div>
-            <div class="hover:cursor-pointer remove-btn">
-                <img src="./assets/exit-button.png" alt="" class="w-5">
-            </div>
-        </div>
-    `;
-    purchaseProductContainer.appendChild(purchaseProduct);
+        if (existingItem) {
+            existingItem.quantity++;
+        }
 
-    //DELETE BTN
-    purchaseProduct.querySelector('.remove-btn').addEventListener('click', () => {
-        purchaseProduct.remove();
-    });
+        else {
+            existingProductInCart.push({ name: name, price: price, quantity: 1 });
+        }
+
+        showCart();
+        alert(`${name} added to cart!`);
+    }
 });
 
 
+
+
+
+//DELETE BTN
+
+purchaseProductContainer.addEventListener('click', (event) => {
+    const removeBtn = event.target.closest('.remove-btn');
+    if (!removeBtn) {
+        return;
+    }
+    else {
+
+        const itemDiv = removeBtn.parentElement;
+        const itemName = itemDiv.querySelector('h4').innerText;
+
+        itemDiv.remove();
+
+        existingProductInCart = existingProductInCart.filter(item => item.name !== itemName);
+
+        alert(`${itemName} removed from cart!`);
+        showCart()
+    }
+});
+
+
+
+
+
+function showCart() {
+    purchaseProductContainer.innerHTML = '';
+    let totalAmount = 0;
+    existingProductInCart.forEach(item => {
+        const purchaseProduct = document.createElement('div');
+        purchaseProduct.innerHTML = `
+        <div class="flex justify-between items-center bg-[#d9ffe4] p-3 rounded-xl my-2">
+            <div>
+                <h4 class="font-medium mb-1">${item.name}</h4>
+                <p>৳${item.price} x ${item.quantity}</p>
+            </div>
+            <div class="remove-btn hover:cursor-pointer" data-name="${item.name}">
+                <img src="./assets/exit-button.png" alt="" class="w-5">
+            </div>
+        </div>
+        `;
+        purchaseProductContainer.appendChild(purchaseProduct);
+        totalAmount += item.price * item.quantity;
+    });
+
+    document.getElementById('total-taka').innerText = `৳${totalAmount}`;
+}
