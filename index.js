@@ -1,5 +1,4 @@
-
-//LOAD CATAGORY LIST
+//LOAD CATEGORY LIST
 
 loadCategoryList = () => {
     showLoadingSpinner()
@@ -16,8 +15,6 @@ loadCategoryList = () => {
 //FUNCTION CALL
 
 loadCategoryList();
-
-
 
 //DISPLAY CATEGORY LIST
 
@@ -46,7 +43,6 @@ document.getElementById('category-list').addEventListener('click', (event) => {
         }
     }
 })
-
 
 // LOAD ALL TREES
 
@@ -170,10 +166,6 @@ categoryContent.addEventListener('click', (event) => {
     }
 });
 
-
-
-
-
 //DELETE BTN
 
 purchaseProductContainer.addEventListener('click', (event) => {
@@ -220,7 +212,6 @@ function showCart() {
     document.getElementById('total-taka').innerText = `৳${totalAmount}`;
 }
 
-
 // SHOW MODAL
 
 function showDetail(treeId) {
@@ -251,10 +242,7 @@ function showDetail(treeId) {
         })
 }
 
-
 // LOADING SPINNER
-
-// const loadingSpinner = document.getElementById('loading-spinner')
 
 function showLoadingSpinner() {
     const loadingSpinner = document.getElementById('loading-spinner')

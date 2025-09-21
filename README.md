@@ -17,7 +17,7 @@ Extract values from arrays/objects
 
 - For Example:
 const [x, y] = [1, 2];
-const {name} = {name:'Alice'};
+const {name} = {name:'Afnan'};
 
 ## 5) Template Literals
 - Use backticks ` for strings
