@@ -2,11 +2,14 @@
 //LOAD CATAGORY LIST
 
 loadCategoryList = () => {
+    showLoadingSpinner()
     fetch("https://openapi.programming-hero.com/api/categories")
         .then((res) => res.json())
         .then((data) => {
             displayCategoryList(data.categories);
+            removeLoadingSpinner()
         })
+    
 
 }
 
@@ -22,7 +25,7 @@ function displayCategoryList(categories) {
     const categoryList = document.getElementById('category-list')
     for (let cat of categories) {
         categoryList.innerHTML += `
-    <p id="${cat.id}" class="hover:bg-[#12b21a88] text-[#1f2937e7] w-56 h-9 flex items-center text-lg my-4 pl-3 rounded-lg hover:cursor-pointer">${cat.category_name}</p>
+    <p id="${cat.id}" class="hover:bg-[#12b21a88] text-[#1f2937e7] w-56 h-9 flex items-center text-lg my-4 pl-3 rounded-lg hover:cursor-pointer duration-300 hover:scale-102 transform active:scale-95">${cat.category_name}</p>
     `
     }
 }
@@ -48,6 +51,7 @@ document.getElementById('category-list').addEventListener('click', (event) => {
 // LOAD ALL TREES
 
 loadAllTrees = () => {
+    showLoadingSpinner()
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
         .then((data) => {
@@ -57,6 +61,7 @@ loadAllTrees = () => {
             for (let plant of allplant) {
                 showAllTrees(plant)
             }
+            removeLoadingSpinner()
         })
 
 }
@@ -79,7 +84,7 @@ function showAllTrees(plant) {
         </div>
         <div>
             <button
-            class="add-to-cart-btn w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full"  data-name="${plant.name}" data-price="${plant.price}">Add to Cart
+            class="add-to-cart-btn w-32 h-10 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-102 transform active:scale-95 w-full"  data-name="${plant.name}" data-price="${plant.price}">Add to Cart
             </button>
         </div>
     </div>
@@ -90,6 +95,7 @@ function showAllTrees(plant) {
 //LOAD CATEGORY CONTENT
 
 function loadCategoryContent(categoryId) {
+    showLoadingSpinner()
     fetch(`https://openapi.programming-hero.com/api/category/${categoryId}`)
         .then((res) => res.json())
         .then((data) => {
@@ -99,8 +105,8 @@ function loadCategoryContent(categoryId) {
             for (const categoryTree of categoryTrees) {
                 showCategoryContent(categoryTree)
             }
+            removeLoadingSpinner()
         })
-
 }
 
 //DISPLAY CATEGORY CONTENT
@@ -122,7 +128,7 @@ function showCategoryContent(plants) {
         </div>
         <div>
             <button
-            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-103 w-full" data-name="${plants.name}" data-price="${plants.price}">Add to Cart
+            class="w-full py-2 bg-[#15803D] rounded-4xl text-white text-center font-medium hover:cursor-pointer hover:bg-[#FACC15] hover:text-[#15803D] duration-300 hover:scale-102 transform active:scale-95 w-full" data-name="${plants.name}" data-price="${plants.price}">Add to Cart
             </button>
         </div>
     </div>
@@ -218,6 +224,7 @@ function showCart() {
 // SHOW MODAL
 
 function showDetail(treeId) {
+    showLoadingSpinner()
     fetch(`https://openapi.programming-hero.com/api/plant/${treeId}`)
         .then((res) => res.json())
         .then((data) => {
@@ -240,6 +247,21 @@ function showDetail(treeId) {
             `;
 
             document.getElementById('modalStructure').showModal();
+            removeLoadingSpinner()
         })
 }
 
+
+// LOADING SPINNER
+
+// const loadingSpinner = document.getElementById('loading-spinner')
+
+function showLoadingSpinner() {
+    const loadingSpinner = document.getElementById('loading-spinner')
+    loadingSpinner.classList.remove('hidden');
+}
+
+function removeLoadingSpinner() {
+    const loadingSpinner = document.getElementById('loading-spinner')
+    loadingSpinner.classList.add('hidden');
+}

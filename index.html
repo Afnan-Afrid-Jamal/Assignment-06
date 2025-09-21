@@ -22,7 +22,7 @@
                 <li><a href="#">Plant a Tree</a></li>
             </ul>
             <button
-                class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">Plant
+                class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-102 transform active:scale-95">Plant
                 a Tree</button>
         </nav>
         <section id="banner-section" class="bg-[#CFF0DC] flex items-center mb-14">
@@ -34,7 +34,7 @@
                 <p class="text-base text-[#1F2937] md:text-center mb-5">Join our mission to plant 1 million trees and
                     make the Earth greener for future generations.</p>
                 <button
-                    class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">Get
+                    class="w-32 py-2 bg-[#FACC15] rounded-4xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-102 transform active:scale-95">Get
                     Involved
                 </button>
             </div>
@@ -57,7 +57,7 @@
             <div id="category-content" class="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
             </div>
 
-            <div id="cart-section" class="shadow-lg md:w-80 sm:w-full h-auto px-5 rounded-lg">
+            <div id="cart-section" class="shadow-lg md:w-80 sm:w-full h-auto px-5 rounded-lg mt-20 md:mt-0">
                 <h2 class="text-xl font-bold mb-5">Your Cart</h2>
                 <div id="purchase-product-container">
 
@@ -136,7 +136,7 @@
                     <option value="More Than 20">More Than 20</option>
                 </select>
                 <button
-                    class="w-full py-2 bg-[#FACC15] rounded-lg text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-105">
+                    class="w-full py-2 bg-[#FACC15] rounded-3xl text-[#15803D] text-center font-medium hover:cursor-pointer hover:bg-white duration-300 hover:scale-102 transform active:scale-95">
                     Plant Now
                 </button>
             </div>
@@ -149,15 +149,20 @@
         </section>
 
         <!-- MODAL -->
-         
+
         <dialog id="modalStructure" class="modal">
             <div class="modal-box"></div>
         </dialog>
 
     </footer>
 
+    <!-- LOADING SPINNER -->
 
-    <script src="index.js"></script>
+    <div id="loading-spinner" class="hidden fixed inset-0 flex items-center justify-center bg-white/70 z-50">
+        <span class="loading loading-bars loading-xl"></span>
+    </div>
+
+    <script src="index.js" class="flex justify-center items-center"></script>
 </body>
 
 </html>
